@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Star } from 'lucide-react';
 
@@ -48,7 +48,7 @@ export default function TestimonialCarousel() {
                                 ))}
                             </div>
                             <p className="text-gray-300 font-light leading-relaxed mb-8 italic text-lg">
-                                "{review.text}"
+                                &quot;{review.text}&quot;
                             </p>
                             <div className="flex items-center gap-4">
                                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 shadow-inner"></div>

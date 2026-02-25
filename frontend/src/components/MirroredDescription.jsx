@@ -1,5 +1,22 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
+
+const ContentText = () => (
+    <div className="max-w-md w-full px-12 pb-32">
+        <h2 className="text-sm tracking-[0.4em] uppercase text-gray-400 mb-8 border-b border-gray-800 pb-4 inline-block">
+            The Dual Experience
+        </h2>
+        <p className="text-xl md:text-2xl font-light leading-relaxed text-gray-300 mb-8 drop-shadow-md">
+            Welcome to a sanctuary designed for the modern observer. Here, hospitality and fine-art photography converge.
+        </p>
+        <p className="text-lg md:text-xl font-light leading-relaxed text-gray-500 mb-8">
+            We have curated every angle, perfected every shadow, and tuned the lighting in every suite to ensure your stay is flawlessly captured.
+        </p>
+        <p className="text-lg md:text-xl font-light leading-relaxed text-gray-500 drop-shadow-md">
+            Our signature two-way vanity mirrors conceal professional-grade lenses, putting you in complete control of your own private photoshoot. You are both the subject and the artist.
+        </p>
+    </div>
+);
 
 export default function MirroredDescription() {
     const containerRef = useRef(null);
@@ -12,23 +29,6 @@ export default function MirroredDescription() {
     const yRight = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
     // Left side (mirrored) scrolls down
     const yLeft = useTransform(scrollYProgress, [0, 1], ["-50%", "0%"]);
-
-    const ContentText = () => (
-        <div className="max-w-md w-full px-12 pb-32">
-            <h2 className="text-sm tracking-[0.4em] uppercase text-gray-400 mb-8 border-b border-gray-800 pb-4 inline-block">
-                The Dual Experience
-            </h2>
-            <p className="text-xl md:text-2xl font-light leading-relaxed text-gray-300 mb-8 drop-shadow-md">
-                Welcome to a sanctuary designed for the modern observer. Here, hospitality and fine-art photography converge.
-            </p>
-            <p className="text-lg md:text-xl font-light leading-relaxed text-gray-500 mb-8">
-                We have curated every angle, perfected every shadow, and tuned the lighting in every suite to ensure your stay is flawlessly captured.
-            </p>
-            <p className="text-lg md:text-xl font-light leading-relaxed text-gray-500 drop-shadow-md">
-                Our signature two-way vanity mirrors conceal professional-grade lenses, putting you in complete control of your own private photoshoot. You are both the subject and the artist.
-            </p>
-        </div>
-    );
 
     return (
         <section

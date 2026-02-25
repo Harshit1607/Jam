@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useState } from 'react';
 import Spline from '@splinetool/react-spline';
 
 export default function Preloader({ onCapture }) {
@@ -11,11 +11,11 @@ export default function Preloader({ onCapture }) {
 
         // Set variable or scale if needed via API, but we will mostly rely on CSS scaling 
         // to reduce it to 25% and ensure it is centered.
-        splineApp.addEventListener('mouseHover', (e) => {
+        splineApp.addEventListener('mouseHover', () => {
             setPromptText("Click the camera to enter the website");
         });
 
-        splineApp.addEventListener('mouseDown', (e) => {
+        splineApp.addEventListener('mouseDown', () => {
             onCapture();
         });
     };
