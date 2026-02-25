@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useState } from 'react';
 import Spline from '@splinetool/react-spline';
 
 export default function Preloader({ onCapture }) {
@@ -23,7 +23,7 @@ export default function Preloader({ onCapture }) {
             setPromptText("Click the camera to enter the website");
         });
 
-        splineApp.addEventListener('mouseDown', (e) => {
+        splineApp.addEventListener('mouseDown', () => {
             onCapture();
         });
     };
