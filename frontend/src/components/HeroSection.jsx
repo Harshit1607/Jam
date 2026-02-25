@@ -1,62 +1,80 @@
-import { ArrowDown } from 'lucide-react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { Menu, ChevronDown, ArrowRight } from 'lucide-react';
 
 export default function HeroSection() {
     return (
-        <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
-            {/* Background Image / Texture - using placeholder gradient for now */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] z-0 px-2">
-                {/* Subtle vignette or noise overlay could go here */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/40 to-black z-10"></div>
+        <section className="relative w-full h-screen overflow-hidden text-white flex flex-col justify-between pt-8 pb-16 px-12">
+            {/* Background Image Loading - We'll use a placeholder until the generated image is ready */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="/mirrorless_hotel_hero.png"
+                    alt="Hotel Interior"
+                    className="w-full h-full object-cover brightness-50"
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                />
+                <div className="absolute inset-0 bg-black/40"></div>
             </div>
 
-            {/* Top Navigation Bar positioned absolutely within the Hero Section */}
-            <nav className="absolute top-0 left-0 w-full p-8 flex justify-between items-center z-20 mix-blend-difference">
-                <div className="text-white text-xl font-medium tracking-[0.2em] uppercase">The Mirror</div>
-                <div className="hidden md:flex gap-8 text-gray-400 text-sm tracking-widest uppercase">
-                    <a href="#experience" className="hover:text-white transition-colors duration-300">Experience</a>
-                    <a href="#reviews" className="hover:text-white transition-colors duration-300">Reviews</a>
-                    <a href="#contact" className="hover:text-white transition-colors duration-300">Contact</a>
+            {/* Top Navigation */}
+            <nav className="relative z-10 w-full flex justify-between items-center text-xs tracking-[0.2em] uppercase border-b border-white/20 pb-6 uppercase font-sans">
+                <div className="flex items-center gap-3 cursor-pointer hover:text-gray-300 transition-colors">
+                    <Menu className="w-5 h-5 stroke-[1.5]" />
+                    <span>Menu</span>
+                </div>
+
+                <div className="absolute left-1/2 -translate-x-1/2 tracking-[0.3em] font-medium">
+                    Mirrorless
+                </div>
+
+                <div className="flex items-center gap-12">
+                    <a href="#locations" className="cursor-pointer hover:text-gray-300 transition-colors">Our Locations</a>
+                    <a href="#book" className="cursor-pointer hover:text-gray-300 transition-colors">Book Now</a>
                 </div>
             </nav>
 
-            {/* Main Content */}
-            <div className="relative z-20 text-center flex flex-col items-center max-w-4xl px-6">
+            {/* Huge Centered Title */}
+            <div className="relative z-10 flex-1 flex items-center justify-center">
                 <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.2 }}
-                    className="text-6xl md:text-8xl font-light tracking-tighter text-white mb-6 drop-shadow-2xl"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    className="text-7xl md:text-[9rem] font-light tracking-tight text-white drop-shadow-2xl"
                 >
-                    Step Into the Frame.
+                    MIRRORLESS
                 </motion.h1>
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.4 }}
-                    className="text-lg md:text-xl text-gray-400 font-light mb-12 max-w-2xl leading-relaxed"
-                >
-                    A boutique hotel experience where every room is a private studio, and every mirror holds a story.
-                </motion.p>
-                <motion.button
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.6 }}
-                    className="skeuomorphic-button text-white px-10 py-4 uppercase tracking-[0.2em] text-sm hover:text-gray-200"
-                >
-                    Book Your Focus
-                </motion.button>
             </div>
 
-            {/* Scroll Indicator */}
+            {/* Bottom Booking Bar */}
             <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 2, delay: 1, repeat: Infinity, repeatType: "reverse" }}
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center z-20 text-gray-500"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="relative z-10 w-full max-w-5xl mx-auto flex items-center justify-between text-sm uppercase tracking-widest font-sans border-b border-white/30 pb-4 px-4"
             >
-                <span className="text-xs uppercase tracking-[0.3em] mb-4">Scroll to Develop</span>
-                <ArrowDown className="w-4 h-4" />
+                <div className="flex items-center gap-16 flex-1">
+                    <div className="flex items-center gap-2 cursor-pointer group flex-1 justify-between">
+                        <span className="text-gray-200 group-hover:text-white transition-colors">Dates</span>
+                        <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+                    </div>
+
+                    <div className="flex items-center gap-2 cursor-pointer group flex-1 justify-between">
+                        <span className="text-gray-200 group-hover:text-white transition-colors">Rooms</span>
+                        <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+                    </div>
+
+                    <div className="flex items-center gap-2 cursor-pointer group flex-1 justify-between">
+                        <span className="text-gray-200 group-hover:text-white transition-colors">Adults / Children</span>
+                        <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+                    </div>
+                </div>
+
+                <div className="ml-16">
+                    <button className="flex items-center gap-4 px-8 py-3 rounded-full border border-white/30 hover:bg-white hover:text-black transition-all duration-500">
+                        <span>Let's Go</span>
+                        <ArrowRight className="w-4 h-4" />
+                    </button>
+                </div>
             </motion.div>
         </section>
     );

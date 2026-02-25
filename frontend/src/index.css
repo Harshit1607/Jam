@@ -11,7 +11,7 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Source Serif 4', serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -21,7 +21,7 @@
 @layer utilities {
   .skeuomorphic-panel {
     background: linear-gradient(145deg, #111111, #0a0a0a);
-    box-shadow: 
+    box-shadow:
       inset 0 1px 1px rgba(255, 255, 255, 0.1),
       inset 0 -1px 1px rgba(0, 0, 0, 0.5),
       0 4px 6px -1px rgba(0, 0, 0, 0.5),
@@ -31,7 +31,7 @@
 
   .skeuomorphic-button {
     background: linear-gradient(145deg, #262626, #1a1a1a);
-    box-shadow: 
+    box-shadow:
       inset 0 1px 1px rgba(255, 255, 255, 0.15),
       0 4px 5px rgba(0, 0, 0, 0.5);
     border: 1px solid #333;
@@ -41,7 +41,7 @@
   .skeuomorphic-button:hover {
     background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
     transform: translateY(-1px);
-    box-shadow: 
+    box-shadow:
       inset 0 1px 1px rgba(255, 255, 255, 0.2),
       0 6px 8px rgba(0, 0, 0, 0.6);
   }
@@ -49,7 +49,7 @@
   .skeuomorphic-button:active {
     background: linear-gradient(145deg, #1a1a1a, #262626);
     transform: translateY(1px);
-    box-shadow: 
+    box-shadow:
       inset 0 1px 1px rgba(0, 0, 0, 0.5),
       0 1px 2px rgba(0, 0, 0, 0.4);
   }
@@ -59,19 +59,17 @@
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     border: 1px solid #1a1a1a;
   }
-  
+
   .glass-divider {
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.15) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0) 100%);
   }
 }
 
 body {
-    margin: 0;
-    min-width: 320px;
-    min-height: 100vh;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
 }

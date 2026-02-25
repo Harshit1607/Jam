@@ -2,16 +2,24 @@ import { useState } from 'react';
 import Spline from '@splinetool/react-spline';
 
 export default function Preloader({ onCapture }) {
-    const [promptText, setPromptText] = useState("Point the camera to this");
+    const [promptText, setPromptText] = useState("Point to this camera");
     const [isLoaded, setIsLoaded] = useState(false);
 
     const onLoad = (splineApp) => {
         setIsLoaded(true);
         console.log("Spline Scene Loaded!");
 
-        // Set variable or scale if needed via API, but we will mostly rely on CSS scaling 
-        // to reduce it to 25% and ensure it is centered.
-        splineApp.addEventListener('mouseHover', () => {
+        // The user mentioned "point the camera to this" doesn't change text. 
+        // We can listen for "lookAt", "mouseHover" or even generic interactions 
+        // depending on what triggers in the Spline scene. Because we don't know the exact 
+        // object name, we will try to make the hover broad, or use "lookAt" if the camera implements it.
+
+        splineApp.addEventListener('lookAt', (e) => {
+            setPromptText("Click the camera to enter the website");
+        });
+
+        // Fallback: If any object gets hovered, assume they found the camera lens.
+        splineApp.addEventListener('mouseHover', (e) => {
             setPromptText("Click the camera to enter the website");
         });
 
