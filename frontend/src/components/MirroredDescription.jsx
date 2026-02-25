@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useScroll, useTransform, motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function MirroredDescription() {
     const containerRef = useRef(null);
@@ -8,60 +8,59 @@ export default function MirroredDescription() {
         offset: ["start end", "end start"]
     });
 
-    // Right Side scrolls up naturally as you scroll down
-    const yRight = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
-    // Left side (mirrored) scrolls down
-    const yLeft = useTransform(scrollYProgress, [0, 1], ["-50%", "0%"]);
-
-    const ContentText = () => (
-        <div className="max-w-md w-full px-12 pb-32">
-            <h2 className="text-sm tracking-[0.4em] uppercase text-gray-400 mb-8 border-b border-gray-800 pb-4 inline-block">
-                The Dual Experience
-            </h2>
-            <p className="text-xl md:text-2xl font-light leading-relaxed text-gray-300 mb-8 drop-shadow-md">
-                Welcome to a sanctuary designed for the modern observer. Here, hospitality and fine-art photography converge.
-            </p>
-            <p className="text-lg md:text-xl font-light leading-relaxed text-gray-500 mb-8">
-                We have curated every angle, perfected every shadow, and tuned the lighting in every suite to ensure your stay is flawlessly captured.
-            </p>
-            <p className="text-lg md:text-xl font-light leading-relaxed text-gray-500 drop-shadow-md">
-                Our signature two-way vanity mirrors conceal professional-grade lenses, putting you in complete control of your own private photoshoot. You are both the subject and the artist.
-            </p>
-        </div>
-    );
+    // Subtle opposite translations
+    const yReal = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
+    const yReflection = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
     return (
         <section
-            id="experience"
             ref={containerRef}
-            className="relative w-full h-[150vh] bg-[#050505] overflow-hidden flex"
+            className="w-full bg-[#050505] text-white py-24 px-6 md:px-12 lg:px-24 overflow-hidden"
         >
-            {/* Split Screen Container */}
-            <div className="absolute inset-0 flex w-full h-full">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row relative">
+                {/* Center subtle mirror line (only visible on md+) */}
+                <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent -translate-x-1/2 z-10"></div>
 
-                {/* Left Side (Reflection - Upside Down & Scrolling Down) */}
-                <div className="w-1/2 h-full relative overflow-hidden bg-[#080808]">
-                    {/* The content container that moves */}
+                {/* Left Side: Real Content + Image */}
+                <motion.div
+                    style={{ y: yReal }}
+                    className="w-full md:w-1/2 md:pr-16 flex flex-col z-20"
+                >
+                    <div className="mb-12">
+                        <h2 className="text-4xl md:text-5xl font-light tracking-tighter mb-6">The Dual Experience</h2>
+                        <p className="text-gray-400 font-light leading-relaxed text-lg mb-6">
+                            Welcome to a sanctuary designed for the modern observer. Here, hospitality and fine-art photography converge. We have curated every angle, perfected every shadow, and tuned the lighting to ensure your stay is flawlessly captured.
+                        </p>
+                        <p className="text-gray-400 font-light leading-relaxed text-lg mb-8">
+                            Our signature design puts you in complete control. You are both the subject and the artist.
+                        </p>
+                        <button className="uppercase tracking-[0.2em] text-xs pb-1 border-b border-white/30 hover:border-white transition-colors duration-300">
+                            Discover the Suites
+                        </button>
+                    </div>
+
+                    <div className="relative aspect-[3/4] w-full max-w-md overflow-hidden">
+                        <img
+                            src="/mirrored_hotel_section.png"
+                            alt="Hotel Suite"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                </motion.div>
+
+                {/* Right Side: Mirrored Reflection (Hidden on mobile) */}
+                <div className="hidden md:flex w-full md:w-1/2 md:pl-16 flex-col justify-end relative z-0">
                     <motion.div
-                        style={{ y: yLeft }}
-                        className="absolute inset-0 w-full h-[200%] flex items-center justify-end"
+                        style={{ y: yReflection }}
+                        className="relative aspect-[3/4] w-full max-w-md overflow-hidden transform scale-y-[-1] opacity-30 blur-[2px]"
                     >
-                        <div className="transform rotate-180 opacity-40 scale-x-[-1] pointer-events-none blur-[1px]">
-                            <ContentText />
-                        </div>
-                    </motion.div>
-                </div>
-
-                {/* Center Glowing Divider */}
-                <div className="absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 z-10 glass-divider shadow-[0_0_15px_rgba(255,255,255,0.2)]"></div>
-
-                {/* Right Side (Reality - Normal & Scrolling Up) */}
-                <div className="w-1/2 h-full relative overflow-hidden bg-[#0a0a0a]">
-                    <motion.div
-                        style={{ y: yRight }}
-                        className="absolute inset-0 w-full h-[200%] flex items-center justify-start"
-                    >
-                        <ContentText />
+                        {/* Gradient Mask to fade it downwards (which visually is "upwards" because it's flipped) */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505] z-10"></div>
+                        <img
+                            src="/mirrored_hotel_section.png"
+                            alt="Hotel Suite Reflection"
+                            className="w-full h-full object-cover"
+                        />
                     </motion.div>
                 </div>
 
