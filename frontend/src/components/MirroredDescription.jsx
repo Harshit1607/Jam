@@ -1,89 +1,77 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { useScroll, useTransform, motion } from 'framer-motion';
 
-const ContentPanel = () => (
-    <div className="w-full max-w-md flex flex-col gap-12 text-white">
-        <div>
-            <h2 className="text-4xl md:text-5xl font-light tracking-tighter mb-6">The Dual Experience</h2>
-            <p className="text-gray-400 font-light leading-relaxed text-lg mb-6">
-                Welcome to a sanctuary designed for the modern observer. Here, hospitality and fine-art photography converge. We have curated every angle, perfected every shadow, and tuned the lighting to ensure your stay is flawlessly captured.
-            </p>
-            <p className="text-gray-400 font-light leading-relaxed text-lg mb-8">
-                Our signature design puts you in complete control. You are both the subject and the artist.
-            </p>
-            <button className="uppercase tracking-[0.2em] text-xs pb-1 border-b border-white/30 hover:border-white transition-colors duration-300">
-                Discover the Suites
-            </button>
-        </div>
-
-        <div className="relative aspect-[3/4] w-full overflow-hidden shadow-2xl">
-            <img
-                src="/mirrored_hotel_section.png"
-                alt="Hotel Suite"
-                className="w-full h-full object-cover"
-            />
-        </div>
+const ContentText = () => (
+    <div className="max-w-md w-full px-12 py-32">
+        <h2 className="text-sm tracking-[0.4em] uppercase text-gray-400 mb-8 border-b border-gray-800 pb-4 inline-block">
+            The Dual Experience
+        </h2>
+        <p className="text-xl md:text-2xl font-light leading-relaxed text-gray-300 mb-8 drop-shadow-md">
+            Welcome to a sanctuary designed for the modern observer. Here, hospitality and fine-art photography converge.
+        </p>
+        <p className="text-lg md:text-xl font-light leading-relaxed text-gray-500 mb-8">
+            We have curated every angle, perfected every shadow, and tuned the lighting in every suite to ensure your stay is flawlessly captured.
+        </p>
+        <p className="text-lg md:text-xl font-light leading-relaxed text-gray-500 drop-shadow-md">
+            Our signature two-way vanity mirrors conceal professional-grade lenses, putting you in complete control of your own private photoshoot. You are both the subject and the artist.
+        </p>
     </div>
 );
 
-export default function MirroredDescription() {
+export default function MirroredDescription({ container }) {
     const containerRef = useRef(null);
-
-    // We want the section to be tall enough to allow for ample scrolling
     const { scrollYProgress } = useScroll({
         target: containerRef,
+        container: container,
         offset: ["start end", "end start"]
     });
 
-    // Left Side scrolls up naturally
-    const yLeft = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+    // We want the total distance to be the same so the speed matches perfectly.
+    // The container height is 150vh.
 
-    // Right Side (Mirrored) scrolls down
-    const yRight = useTransform(scrollYProgress, [0, 1], ["-30%", "0%"]);
+    // RIGHT SIDE (Real Text):
+    // Starts from bottom (out of view) and slides up to its natural center.
+    // Let's use 100% to represent a full screen height of travel.
+    // It will go from 100% (initially hidden at bottom) to 0% (centered)
+    const yRight = useTransform(scrollYProgress, [0, 0.5], ["100%", "0%"]);
+
+    // LEFT SIDE (Mirrored Text):
+    // Starts from top (out of view) and slides down to its natural center.
+    // It will go from -100% (initially hidden at top) to 0% (centered)
+    const yLeft = useTransform(scrollYProgress, [0, 0.5], ["-100%", "0%"]);
 
     return (
         <section
-            id="experience"
             ref={containerRef}
-            className="relative w-full h-[200vh] bg-[#050505] overflow-hidden"
+            className="relative w-full h-[100vh] bg-[#050505] overflow-hidden flex"
         >
-            {/* Split Screen Container fixed to viewport while strolling through section */}
-            <div className="sticky top-0 h-screen w-full flex">
+            <div className="absolute inset-0 flex w-full h-full">
 
-                {/* Left Side (Reality - Normal & Scrolling Up) */}
-                <div className="hidden md:flex w-1/2 h-full relative overflow-hidden bg-[#050505] px-6 md:px-12 justify-end">
+                {/* Left Side (Reflection - Starts top, slides down to center) */}
+                <div className="w-1/2 h-full relative overflow-hidden bg-[#080808]">
                     <motion.div
                         style={{ y: yLeft }}
-                        className="absolute top-[30vh] pb-[50vh] flex justify-end w-full pr-8"
+                        className="absolute inset-0 w-full h-full flex items-center justify-end"
                     >
-                        <ContentPanel />
-                    </motion.div>
-                </div>
-
-                {/* Mobile Fallback Center Side */}
-                <div className="md:hidden w-full h-full relative overflow-hidden bg-[#050505] px-6 py-24 object-contain overflow-y-auto">
-                    <ContentPanel />
-                </div>
-
-                {/* Center Glowing Divider */}
-                <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent -translate-x-1/2 z-10 shadow-[0_0_15px_rgba(255,255,255,0.05)]"></div>
-
-                {/* Right Side (Reflection - Upside Down & Scrolling Down) */}
-                <div className="hidden md:flex w-1/2 h-full relative overflow-hidden bg-[#080808] px-6 md:px-12 justify-start">
-                    <motion.div
-                        style={{ y: yRight }}
-                        className="absolute top-[-25%] pb-[50vh] flex justify-start w-full pl-8"
-                    >
-                        {/* 
-                          Rotate 180 flips it upside down and backwards. 
-                          We add opacity or blur to make it feel like a reflection. 
-                        */}
-                        <div className="transform rotate-180 opacity-40 blur-[1px] pointer-events-none">
-                            <ContentPanel />
+                        {/* We use scaleY(-1) to flip it upside down like a darkroom mirror */}
+                        <div className="transform scale-y-[-1] opacity-50 pointer-events-none blur-[2px]">
+                            <ContentText />
                         </div>
                     </motion.div>
                 </div>
 
+                {/* Center Glowing Divider */}
+                <div className="absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 z-10 glass-divider shadow-[0_0_15px_rgba(255,255,255,0.2)]"></div>
+
+                {/* Right Side (Reality - Starts bottom, slides up to center) */}
+                <div className="w-1/2 h-full relative overflow-hidden bg-[#0a0a0a]">
+                    <motion.div
+                        style={{ y: yRight }}
+                        className="absolute inset-0 w-full h-full flex items-center justify-start"
+                    >
+                        <ContentText />
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

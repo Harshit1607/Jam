@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
 import { Menu, ChevronDown, ArrowRight } from 'lucide-react';
 
@@ -71,7 +71,7 @@ export default function HeroSection() {
 
                 <div className="ml-16">
                     <button className="flex items-center gap-4 px-8 py-3 rounded-full border border-white/30 hover:bg-white hover:text-black transition-all duration-500">
-                        <span>Let's Go</span>
+                        <span>Let&apos;s Go</span>
                         <ArrowRight className="w-4 h-4" />
                     </button>
                 </div>
