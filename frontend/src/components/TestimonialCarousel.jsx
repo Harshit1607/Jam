@@ -20,10 +20,12 @@ const reviews = [
     }
 ];
 
-export default function TestimonialCarousel() {
+export default function TestimonialCarousel({ container }) {
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
+        container: container,
+        offset: ["start end", "end start"]
     });
 
     const x = useTransform(scrollYProgress, [0, 1], ["10%", "-60%"]);
