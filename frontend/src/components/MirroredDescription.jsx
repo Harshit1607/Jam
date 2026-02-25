@@ -42,6 +42,7 @@ export default function MirroredDescription({ container }) {
 
     return (
         <section
+            id="experience"
             ref={containerRef}
             className="relative w-full h-[100vh] bg-[#050505] overflow-hidden flex"
         >

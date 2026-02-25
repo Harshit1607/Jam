@@ -17,32 +17,50 @@ export default function HeroSection() {
             </div>
 
             {/* Top Navigation */}
-            <nav className="relative z-10 w-full flex justify-between items-center text-xs tracking-[0.2em] uppercase border-b border-white/20 pb-6 uppercase font-sans">
-                <div className="flex items-center gap-3 cursor-pointer hover:text-gray-300 transition-colors">
-                    <Menu className="w-5 h-5 stroke-[1.5]" />
-                    <span>Menu</span>
-                </div>
-
-                <div className="absolute left-1/2 -translate-x-1/2 tracking-[0.3em] font-medium">
-                    Mirrorless
-                </div>
-
-                <div className="flex items-center gap-12">
-                    <a href="#locations" className="cursor-pointer hover:text-gray-300 transition-colors">Our Locations</a>
-                    <a href="#book" className="cursor-pointer hover:text-gray-300 transition-colors">Book Now</a>
+            <nav className="relative z-10 w-full flex justify-end items-center text-[10px] md:text-xs tracking-[0.3em] uppercase border-b border-white/20 pb-6 font-sans">
+                <div className="flex items-center gap-8 md:gap-24 pr-4 md:pr-12">
+                    <button
+                        onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="cursor-pointer hover:text-white text-gray-400 transition-colors"
+                    >
+                        Experience
+                    </button>
+                    <button
+                        onClick={() => document.getElementById('reviews')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="cursor-pointer hover:text-white text-gray-400 transition-colors"
+                    >
+                        Looking Back
+                    </button>
+                    <button
+                        onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="cursor-pointer hover:text-white text-gray-400 transition-colors"
+                    >
+                        Contact Us
+                    </button>
                 </div>
             </nav>
 
-            {/* Huge Centered Title */}
+            {/* Huge Centered Typography Effect: MIRROR | SSEL */}
             <div className="relative z-10 flex-1 flex items-center justify-center">
-                <motion.h1
+                <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1.5, ease: "easeOut" }}
-                    className="text-7xl md:text-[9rem] font-light tracking-tight text-white drop-shadow-2xl"
+                    className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 drop-shadow-2xl"
                 >
-                    MIRRORLESS
-                </motion.h1>
+                    {/* The Real Side */}
+                    <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-light tracking-tight text-white mb-0">
+                        MIRROR
+                    </h1>
+
+                    {/* The Glass/Mirror Line */}
+                    <div className="w-[80vw] h-[1px] md:w-[1px] md:h-[6rem] lg:h-[8rem] bg-gradient-to-r md:bg-gradient-to-b from-transparent via-white/80 to-transparent shadow-[0_0_15px_rgba(255,255,255,0.4)]"></div>
+
+                    {/* The Reflection Side */}
+                    <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-light tracking-tight text-gray-300 transform scale-x-[-1] opacity-70 mb-0 blur-[0.5px]">
+                        LESS
+                    </h1>
+                </motion.div>
             </div>
 
             {/* Bottom Booking Bar */}
