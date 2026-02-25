@@ -1,20 +1,17 @@
-import Footer from './components/Footer';
+import { useState } from 'react'
+import Preloader from './components/Preloader'
+import MainUI from './components/MainUI'
 
-function App() {
+export default function App() {
+  const [isCaptured, setIsCaptured] = useState(false)
+
   return (
-    <div className="min-h-screen bg-neutral-950 flex flex-col items-center justify-center p-4">
-      <div className="text-center space-y-6">
-        <h1 className="text-6xl font-black bg-gradient-to-br from-white to-neutral-500 bg-clip-text text-transparent italic tracking-tighter">
-          PROJECT JAM
-        </h1>
-        <p className="text-neutral-500 max-w-md mx-auto text-lg">
-          A minimalist placeholder for something extraordinary.
-        </p>
-      </div>
+    <div className="relative w-full h-screen overflow-hidden bg-black">
+      {/* 3D Preloader */}
+      <Preloader onCapture={() => setIsCaptured(true)} />
 
-      <Footer />
+      {/* Main Website UI that prints down like a Polaroid */}
+      <MainUI isVisible={isCaptured} />
     </div>
   )
 }
-
-export default App

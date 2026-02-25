@@ -1,0 +1,55 @@
+--- PARAGRAPHS ---
+Website Information Architecture & Content Document
+Project: Interactive 3D Hotel & Photography Experience Date: February 2026
+1. The "Feeling" of the Website (Art Direction & Vibe)
+The website needs to feel less like a traditional webpage and more like a tactile, high-end digital art piece. It blends physical mechanics with digital interfaces.
+Color Palette & Aesthetic: A deeply minimalist, dark mode aesthetic. Utilizing a "Skeuomorphic Dark UI" approach will give elements like the camera lens, the polaroid frame, and the mirror's edge a premium, physical depth. Deep charcoal blacks, subtle metallic silver highlights, and soft, glowing typography.
+The Vibe: Mysterious, luxurious, cinematic, and intimate. It should evoke the feeling of stepping into a darkroom or an exclusive, dimly lit luxury suite.
+Interaction: Smooth, deliberate, and physics-based. The transitions (the flash, the printing polaroid, the mirrored scrolling) should feel weighty and tactile, not floaty.
+2. User Flow & Screen Architecture
+Phase 1: The Capture (Pre-Loader)
+Visual: The screen is entirely taken up by a high-fidelity 3D Spline scene. A camera floats in a dark void.
+Interaction: The user moves their mouse, and the 3D camera tracks the cursor. When the cursor hovers over the central focal point (the "Shutter" button or Hotel Name), the camera lens aligns perfectly with the user's view.
+Action: A bright, blinding white flash overtakes the screen.
+Sound Design (Optional): A mechanical camera shutter click.
+Phase 2: The Print (Transition to Main UI)
+Visual: The white flash fades into a sleek, dark interface. From the bottom of the screen, a digital "Polaroid" smoothly slides up and scales to fill the entire viewport. This Polaroid frame is your website container.
+3. Section-by-Section Copy & Structure (Main Interface)
+Section 1: The Hero Section (Inside the Polaroid)
+Structure: Full-screen background imagery (a moody, highly aesthetic shot of a hotel suite mirror). Minimalist top navigation. Centered typography.
+UI Elements: Top left Logo. Top right hidden menu (About, Experience, Reviews, Contact). Downward arrow indicator.
+Copywriter Elements:
+Headline: Step Into the Frame.
+Sub-headline: A boutique hotel experience where every room is a private studio, and every mirror holds a story.
+Primary Button: Book Your Focus
+Scroll Indicator Text: Scroll to Develop
+Section 2: The Mirrored Description
+Structure: A 50/50 vertical split-screen. A glowing, thin glass-like divider runs down the exact center.
+Interaction Mechanic: As the user scrolls down, the text on the Right scrolls up naturally. The exact same text on the Left is rendered upside down and scrolls downward at the exact same speed, creating a literal mirror reflection effect.
+Copywriter Elements (Right Side - Reality):
+Section Title: The Dual Experience
+Body Paragraph 1: Welcome to a sanctuary designed for the modern observer. Here, hospitality and fine-art photography converge. We have curated every angle, perfected every shadow, and tuned the lighting in every suite to ensure your stay is flawlessly captured.
+Body Paragraph 2: Our signature two-way vanity mirrors conceal professional-grade lenses, putting you in complete control of your own private photoshoot. You are both the subject and the artist.
+Copywriter Elements (Left Side - Reflection):
+Note: This text is visually flipped upside down, mirroring the right side perfectly.
+Section 3: Guest Reflections (Testimonials)
+Structure: A horizontal carousel of sleek, dark glassmorphism cards.
+UI Elements: Star ratings, guest names, and a small, aesthetic profile image.
+Copywriter Elements:
+Section Title: Looking Back
+Review 1: "An incredibly surreal getaway. The hidden camera mechanics behind the mirror allowed us to take the most authentic, beautiful portraits we’ve ever had, all in complete privacy." – Elena R.
+Review 2: "The aesthetic is unmatched. From the lobby to the suite, every detail feels like stepping into a cinematic masterpiece. A must-visit for creatives." – Julian M.
+Review 3: "I’ve never stayed anywhere that blended technology, art, and luxury so seamlessly. The 'polaroid' checkout souvenir was the perfect touch." – Sarah T.
+Section 4: The Darkroom (Footer & Contact)
+Structure: A clean, spacious footer anchoring the bottom of the page. Contains the backend-integrated contact form.
+UI Elements: Skeuomorphic form fields that look elegantly inset into the dark background.
+Copywriter Elements:
+Headline: Ready for your close-up?
+Sub-headline: Drop us a message for reservations, press inquiries, or private event bookings.
+Form Fields:
+Name (Placeholder: "Your Name")
+Email (Placeholder: "Your Lens")
+Message (Placeholder: "Tell us your vision...")
+Submit Button: Send Message
+Bottom Links: © 2026 The Mirror Hotel. | Privacy Policy | Terms of Service | Instagram | Twitter
+--- TABLES ---
