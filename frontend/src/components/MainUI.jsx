@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import HeroSection from './HeroSection';
+import MirroredDescription from './MirroredDescription';
+import TestimonialCarousel from './TestimonialCarousel';
+import FooterDarkroom from './FooterDarkroom';
 
 export default function MainUI({ isVisible }) {
     return (
@@ -12,15 +15,10 @@ export default function MainUI({ isVisible }) {
         >
             <div className="w-full h-full bg-[var(--background)] overflow-y-auto relative scroll-smooth">
                 <HeroSection />
-
-                <div className="p-10 flex flex-col items-center justify-center min-h-screen border-t border-gray-900 mt-20">
-                    <p className="text-xl text-gray-600">More sections rendering below...</p>
-                </div>
+                <MirroredDescription />
+                <TestimonialCarousel />
+                <FooterDarkroom />
             </div>
         </motion.div>
-    );
-}
-            </div >
-        </motion.div >
     );
 }
