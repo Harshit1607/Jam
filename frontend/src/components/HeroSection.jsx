@@ -49,15 +49,15 @@ export default function HeroSection() {
                     className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 drop-shadow-2xl"
                 >
                     {/* The Real Side */}
-                    <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-light tracking-tight text-white mb-0">
+                    <h1 className="text-4xl md:text-[6rem] lg:text-[7.5rem] font-light tracking-tight text-white mb-0">
                         MIRROR
                     </h1>
 
                     {/* The Glass/Mirror Line */}
-                    <div className="w-[80vw] h-[1px] md:w-[1px] md:h-[6rem] lg:h-[8rem] bg-gradient-to-r md:bg-gradient-to-b from-transparent via-white/80 to-transparent shadow-[0_0_15px_rgba(255,255,255,0.4)]"></div>
+                    <div className="w-[80vw] h-[1px] md:w-[1px] md:h-[5rem] lg:h-[6rem] bg-gradient-to-r md:bg-gradient-to-b from-transparent via-white/80 to-transparent shadow-[0_0_15px_rgba(255,255,255,0.4)]"></div>
 
                     {/* The Reflection Side */}
-                    <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-light tracking-tight text-gray-300 transform scale-x-[-1] opacity-70 mb-0 blur-[0.5px]">
+                    <h1 className="text-4xl md:text-[6rem] lg:text-[7.5rem] font-light tracking-tight text-gray-300 transform scale-x-[-1] opacity-70 mb-0 blur-[0.5px]">
                         LESS
                     </h1>
                 </motion.div>
