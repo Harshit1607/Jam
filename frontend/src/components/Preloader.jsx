@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Spline from '@splinetool/react-spline';
 
 export default function Preloader({ onCapture }) {
-    const [promptText, setPromptText] = useState("Point to this camera");
+    const [promptText, setPromptText] = useState("Point camera here and click");
     const [isLoaded, setIsLoaded] = useState(false);
 
     const onLoad = (splineApp) => {
